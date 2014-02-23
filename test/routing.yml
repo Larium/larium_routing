@@ -1,0 +1,17 @@
+-
+    pattern: '/products/:slug'
+    route: {action: 'show'}
+-
+    pattern: '/products/:id/edit'
+    route: {action: 'edit'}
+-
+    pattern: '/products'
+    route: {action: 'index'}
+-
+    pattern: '/admin/:controller/:id/edit'
+    route: {action: 'edit'}
+    prefix: 'Admin\\'
+-
+    pattern: '/admin/panel/:controller/:id/edit'
+    route: {action: 'edit'}
+    prefix: 'Admin\\Panel'
