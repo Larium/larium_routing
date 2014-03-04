@@ -60,6 +60,11 @@ class Router implements RouterInterface
         }
     }
 
+    public function addRoutes(array $routes)
+    {
+        $this->setRoutes($routes);
+    }
+
     public function getMatchRoute()
     {
         return $this->match_route;
