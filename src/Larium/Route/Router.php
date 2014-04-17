@@ -55,9 +55,17 @@ class Router implements RouterInterface
 
     public function setRoutes(array $routes)
     {
-        foreach ($routes as $priority => $route) {
-            $this->registerRoute($route, $priority);
+        $i = 0;
+        foreach ($routes as $name => $route) {
+            $name = !is_numeric($name) ? $name : null;
+            $this->registerRoute($route, $i, $name);
+            $i++;
         }
+    }
+
+    public function addRoutes(array $routes)
+    {
+        $this->setRoutes($routes);
     }
 
     public function getMatchRoute()
@@ -131,7 +139,7 @@ class Router implements RouterInterface
                 $params['method']
             );
 
-            $route_instances[] = $route;
+            $route_instances[$name] = $route;
         }
 
         return new self($route_instances);
