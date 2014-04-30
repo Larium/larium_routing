@@ -114,24 +114,26 @@ class RouterTest extends \PHPUnit_Framework_TestCase
 
     public function testLoadFromYaml()
     {
-        $router = Router::loadFromYaml(__DIR__ . '/../../routing.yml');
+        if (function_exists('yaml_parse_file')) {
+            $router = Router::loadFromYaml(__DIR__ . '/../../routing.yml');
 
-        $request = new Request('http://www.example.com/products/t-shirt');
-        $response = new Response();
+            $request = new Request('http://www.example.com/products/t-shirt');
+            $response = new Response();
 
-        $router->route($request, $response);
+            $router->route($request, $response);
 
-        $this->assertEquals(200, $response->getStatus());
+            $this->assertEquals(200, $response->getStatus());
 
-        // url that does not match with any given route, fallbacks to Route\Base;
-        $router = Router::loadFromYaml(__DIR__ . '/../../routing.yml');
-        $request = new Request('http://www.example.com/products/apply/t-shirt');
-        $response = new Response();
+            // url that does not match with any given route, fallbacks to Route\Base;
+            $router = Router::loadFromYaml(__DIR__ . '/../../routing.yml');
+            $request = new Request('http://www.example.com/products/apply/t-shirt');
+            $response = new Response();
 
-        $match = $router->route($request, $response);
+            $match = $router->route($request, $response);
 
-        $this->assertInstanceOf('Larium\\Route\\Base', $router->getMatchRoute());
-        $this->assertEquals('Products', $match->getController());
-        $this->assertEquals('apply', $match->getAction());
+            $this->assertInstanceOf('Larium\\Route\\Base', $router->getMatchRoute());
+            $this->assertEquals('Products', $match->getController());
+            $this->assertEquals('apply', $match->getAction());
+        }
     }
 }

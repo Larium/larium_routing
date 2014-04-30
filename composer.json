@@ -1,0 +1,28 @@
+{
+    "name": "larium/routing",
+    "description": "Larium routing library",
+    "type": "library",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Andreas Kollaros",
+            "email": "andreaskollaros@ymail.com"
+        }
+    ],
+    "repositories": [
+        {
+            "url": "git@github.com:Larium/larium_http.git",
+            "type": "git"
+        }
+    ],
+    "require": {
+        "php": ">=5.3",
+        "larium/http": "*"
+    },
+    "minimum-stability": "dev",
+    "autoload": {
+        "psr-0": {
+            "Larium\\": "src/"
+        }
+    }
+}
