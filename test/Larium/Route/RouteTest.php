@@ -145,6 +145,23 @@ class RouteTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('/products/edit/12?foo=bar', $route->getUrl($params));
     }
 
+    public function testGetRouteUrlWithQueryWithoutParams()
+    {
+
+        $route = new Route(
+            '/edit',
+            array(
+                'action' => 'show'
+            )
+        );
+
+        $params = array(
+            'foo' => 'bar'
+        );
+
+        $this->assertEquals('/edit?foo=bar', $route->getUrl($params));
+    }
+
     public function testMatchWithPrefix()
     {
         $route = new Route(

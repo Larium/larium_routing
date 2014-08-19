@@ -110,6 +110,7 @@ class Route implements RouteInterface
             preg_match_all('/:[\w]+/', $this->pattern, $m);
             $want = $m[0];
 
+
             // if has placeholders(:) then intersect them with user params to
             // find which params should be appended as query string.
             $q = null;
@@ -119,6 +120,8 @@ class Route implements RouteInterface
                 if (!empty($query)) {
                     $q = '?' . http_build_query($query);
                 }
+            } else {
+                $q = '?' . http_build_query($params);
             }
 
             return str_replace(array_keys($params), $params, $this->pattern) . $q;
