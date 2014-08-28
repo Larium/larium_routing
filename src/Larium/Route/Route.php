@@ -120,11 +120,16 @@ class Route implements RouteInterface
                 if (!empty($query)) {
                     $q = '?' . http_build_query($query);
                 }
+
+                $wants = (array_intersect_key($params, array_flip($want)));
+
+                return str_replace(array_keys($wants), $wants, $this->pattern) . $q;
             } else {
                 $q = '?' . http_build_query($params);
+
+                return str_replace(array_keys($params), $params, $this->pattern) . $q;
             }
 
-            return str_replace(array_keys($params), $params, $this->pattern) . $q;
 
         } else {
 
