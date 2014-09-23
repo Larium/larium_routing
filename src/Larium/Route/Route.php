@@ -127,7 +127,7 @@ class Route implements RouteInterface
             } else {
                 $q = '?' . http_build_query($params);
 
-                return str_replace(array_keys($params), $params, $this->pattern) . $q;
+                return $this->pattern . $q;
             }
 
 
