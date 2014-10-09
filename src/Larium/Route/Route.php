@@ -233,11 +233,6 @@ class Route implements RouteInterface
         }
 
         if (!($this->route instanceof \Closure)) {
-            if (null === $controller) {
-                throw new \InvalidArgumentException(
-                    "Controller not defined in Route"
-                );
-            }
 
             if (null === $action) {
                 throw new \InvalidArgumentException(

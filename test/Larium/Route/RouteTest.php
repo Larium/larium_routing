@@ -272,4 +272,22 @@ class RouteTest extends \PHPUnit_Framework_TestCase
         $this->assertEquals('showAction', $route->getAction());
 
     }
+
+    public function testRouteActionOnly()
+    {
+        $route = new Route(
+            '/products/:slug',
+            array(
+                'action' => 'Action\productShowAction'
+            )
+        );
+
+        $request = new Request('http://www.example.com/products/t-shirt');
+
+        $match = $route->match($request);
+
+        $this->assertTrue($match);
+
+        $this->assertEquals('Action\productShowAction', $route->getAction());
+    }
 }
