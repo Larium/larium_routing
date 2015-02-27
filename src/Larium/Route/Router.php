@@ -55,7 +55,7 @@ class Router implements RouterInterface
 
     public function setRoutes(array $routes)
     {
-        $i = 0;
+        $i = 1;
         foreach ($routes as $name => $route) {
             $name = !is_numeric($name) ? $name : null;
             $this->registerRoute($route, $i, $name);
