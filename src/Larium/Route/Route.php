@@ -69,7 +69,7 @@ class Route implements RouteInterface
 
     public function match(RequestInterface $request)
     {
-        if ($this->method !== $request->getMethod()) {
+        if ($this->method !== 'ANY' && $this->method !== $request->getMethod() ) {
 
             return false;
         }
